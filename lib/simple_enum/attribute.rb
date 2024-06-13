@@ -94,7 +94,7 @@ module SimpleEnum
 
       enum.each_pair do |key, value|
         scope_key = pluralize_scopes ? key.pluralize : key
-        scope "#{accessor.prefix}#{scope_key}", -> { accessor.scope(klass, value) }
+        scope "#{accessor.prefix}#{scope_key}", -> { self.scoping{ accessor.scope(klass, value) } }
       end
     end
   end
